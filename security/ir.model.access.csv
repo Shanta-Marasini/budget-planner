@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_custom-addons/budget_planner_custom-addons/budget_planner,custom-addons/budget_planner.custom-addons/budget_planner,model_custom-addons/budget_planner_custom-addons/budget_planner,base.group_user,1,1,1,1
+access_budget_years,Access Budget Years,model_budget_years,base.group_user,1,1,1,1
+access_budget_months,Access Budget Months,model_budget_months,base.group_user,1,1,1,1
