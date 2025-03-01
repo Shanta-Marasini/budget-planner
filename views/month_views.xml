@@ -22,6 +22,14 @@
                         <group>
                             <field name="name"/>
                             <field name="year_id"/>
+                            <field name="income_ids">
+                                <list editable="bottom">
+                                    <field name="line_income"/>
+                                    <field name="date"/>
+                                    <field name="category_id"/>
+                                </list>
+                            </field>
+
                         </group>
                     </sheet>
                 </form>

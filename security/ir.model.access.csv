@@ -1,3 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_budget_years,Access Budget Years,model_budget_years,base.group_user,1,1,1,1
 access_budget_months,Access Budget Months,model_budget_months,base.group_user,1,1,1,1
+access_budget_income,Access Budget Income,model_budget_income,base.group_user,1,1,1,1
+access_budget_expense,Access Budget Expense,model_budget_expense,base.group_user,1,1,1,1
+access_budget_category,Access Budget Category,model_budget_category,base.group_user,1,1,1,1

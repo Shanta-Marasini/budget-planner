@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_budget_income_list" model="ir.ui.view">
+            <field name="name">budget.income.list</field>
+            <field name="model">budget.income</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="category_id"/>
+                    <field name="year_id"/>
+                    <field name="month_id"/>
+                    <field name="date"/>
+                    <field name="line_income"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="view_income_form" model="ir.ui.view">
+            <field name="name">income.form</field>
+            <field name="model">budget.income</field>
+            <field name="arch" type="xml">
+                <form string="Income">
+                    <sheet>
+                        <group>
+                            <field name="category_id"/>
+                            <field name="year_id"/>
+                            <field name="month_id"/>
+                            <field name="date"/>
+                            <field name="line_income"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_budget_expense_list" model="ir.ui.view">
+            <field name="name">budget.expense.list</field>
+            <field name="model">budget.expense</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="category_id"/>
+                    <field name="year_id"/>
+                    <field name="month_id"/>
+                    <field name="date"/>
+                    <field name="line_expense"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="view_expense_form" model="ir.ui.view">
+            <field name="name">expense.form</field>
+            <field name="model">budget.expense</field>
+            <field name="arch" type="xml">
+                <form string="Expense">
+                    <sheet>
+                        <group>
+                            <field name="category_id"/>
+                            <field name="year_id"/>
+                            <field name="month_id"/>
+                            <field name="date"/>
+                            <field name="line_expense"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Action for Income Model -->
+        <record id="action_income" model="ir.actions.act_window">
+            <field name="name">Income</field>
+            <field name="res_model">budget.income</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <!-- Action for Income Model -->
+        <record id="action_expense" model="ir.actions.act_window">
+            <field name="name">Expense</field>
+            <field name="res_model">budget.expense</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+
+        <menuitem id="menu_income" name="Incomes" parent="menu_year_root" action="action_income"/>
+        <menuitem id="menu_expense" name="Expenses" parent="menu_year_root" action="action_expense"/>
+    </data>
+</odoo>
+
