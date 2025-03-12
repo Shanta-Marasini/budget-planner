@@ -22,7 +22,12 @@
                         <group>
                             <field name="name"/>
                             <field name="category_type"/>
-                            
+                            <field name="sub_category_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+            
+                                </list>
+                            </field>
                         </group>
                     </sheet>
                 </form>

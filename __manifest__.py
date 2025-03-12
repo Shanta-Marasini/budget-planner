@@ -28,7 +28,8 @@ Long description of module's purpose
         'views/year_views.xml',
         'views/month_views.xml',
         'views/category_views.xml',
-        'views/lines_views.xml'
+        'views/lines_views.xml',
+        'views/place_views.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

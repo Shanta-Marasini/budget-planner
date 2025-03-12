@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_budget_place_list" model="ir.ui.view">
+            <field name="name">budget.place.list</field>
+            <field name="model">budget.place</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="name"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="view_place_form" model="ir.ui.view">
+            <field name="name">place.form</field>
+            <field name="model">budget.place</field>
+            <field name="arch" type="xml">
+                <form string="Place">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Action for Category Model -->
+        <record id="action_place" model="ir.actions.act_window">
+            <field name="name">Place</field>
+            <field name="res_model">budget.place</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+
+        <menuitem id="menu_place" name="Places" parent="menu_year_root" action="action_place"/>
+    </data>
+</odoo>
+

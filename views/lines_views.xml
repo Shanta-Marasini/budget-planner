@@ -7,10 +7,11 @@
             <field name="model">budget.income</field>
             <field name="arch" type="xml">
                 <list>
-                    <field name="category_id"/>
-                    <field name="year_id"/>
-                    <field name="month_id"/>
                     <field name="date"/>
+                    <field name="category_id"/>
+                    <field name="sub_category_id"/>
+                    <field name="status"/>
+                    <field name="description"/>
                     <field name="line_income"/>
                 </list>
             </field>
@@ -24,6 +25,8 @@
                     <sheet>
                         <group>
                             <field name="category_id"/>
+                            <field name="sub_category_id"/>
+                            <field name="status"/>
                             <field name="year_id"/>
                             <field name="month_id"/>
                             <field name="date"/>
@@ -39,10 +42,13 @@
             <field name="model">budget.expense</field>
             <field name="arch" type="xml">
                 <list>
-                    <field name="category_id"/>
-                    <field name="year_id"/>
-                    <field name="month_id"/>
                     <field name="date"/>
+                    <field name="category_id"/>
+                    <field name="sub_category_id"/>
+                    <field name="status"/>
+                    <field name="place"/>
+                    <field name="description"/>
+                    <field name="units"/>
                     <field name="line_expense"/>
                 </list>
             </field>
@@ -55,10 +61,13 @@
                 <form string="Expense">
                     <sheet>
                         <group>
-                            <field name="category_id"/>
-                            <field name="year_id"/>
-                            <field name="month_id"/>
                             <field name="date"/>
+                            <field name="category_id"/>
+                            <field name="sub_category_id"/>
+                            <field name="status"/>
+                            <field name="place"/>
+                            <field name="units"/>
+                            <field name="description"/>
                             <field name="line_expense"/>
                         </group>
                     </sheet>

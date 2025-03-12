@@ -26,9 +26,18 @@
                             <field name="currency_id"/>
                             <field name="year_income"/>
                             <field name="year_expense"/>
-                            <field name="month_ids"/>
-                            <field name="income_ids"/>
-                            <field name="expense_ids"/>
+                            <separator string="Months Highlights: Summary"/>
+                            <field name="month_ids" nolabel="1">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="month_income"/>
+                                    <field name="month_expense"/>
+                                </list>
+                            </field>
+                            <separator string="Income Lines"/>
+                            <field name="income_ids" nolabel="1"/>
+                            <separator string="Expense Lines"/>
+                            <field name="expense_ids" nolabel="1"/>
                         </group>
                     </sheet>
                 </form>

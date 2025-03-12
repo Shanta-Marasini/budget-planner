@@ -7,8 +7,10 @@
             <field name="model">budget.months</field>
             <field name="arch" type="xml">
                 <list>
-                    <field name="name"/>
                     <field name="year_id"/>
+                    <field name="name"/>
+                    <field name="month_income"/>
+                    <field name="month_expense"/>
                 </list>
             </field>
         </record>
@@ -22,14 +24,10 @@
                         <group>
                             <field name="name"/>
                             <field name="year_id"/>
-                            <field name="income_ids">
-                                <list editable="bottom">
-                                    <field name="line_income"/>
-                                    <field name="date"/>
-                                    <field name="category_id"/>
-                                </list>
-                            </field>
-
+                            <separator string="Income Lines"/>
+                            <field name="income_ids" nolabel="1"/>
+                            <separator string="Expense Lines"/>
+                            <field name="expense_ids" nolabel="1"/>
                         </group>
                     </sheet>
                 </form>
