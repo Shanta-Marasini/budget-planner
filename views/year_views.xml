@@ -6,11 +6,14 @@
             <field name="name">budget.year.list</field>
             <field name="model">budget.years</field>
             <field name="arch" type="xml">
-                <list>
-                    <field name="name"/>
-                    <field name="currency_id"/>
-                    <field name="year_income"/>
-                    <field name="year_expense"/>
+                <list default_order="name desc"> 
+                    <field name="name" width="15%"/>
+                    <field name="currency_id" width="15%"/>
+                    <field name="year_income" width="15%"/>
+                    <field name="year_expense" width="15%"/>
+                    <field name="monthly_average_income" width="15%"/>
+                    <field name="monthly_average_expense" width="15%"/>
+
                 </list>
             </field>
         </record>
@@ -22,23 +25,44 @@
                 <form string="Year">
                     <sheet>
                         <group>
-                            <field name="name"/>
-                            <field name="currency_id"/>
-                            <field name="year_income"/>
-                            <field name="year_expense"/>
-                            <separator string="Months Highlights: Summary"/>
-                            <field name="month_ids" nolabel="1">
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group> 
+                                <field name="currency_id"/>
+                            </group>
+
+                            <group>
+                                <field name="year_income"/>
+                                <field name="monthly_average_income"/>
+                            </group>
+                            <group>
+                                <field name="year_expense"/>
+                                <field name="monthly_average_expense"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Months Highlights: Summary">
+                                <field name="month_ids">
                                 <list editable="bottom">
                                     <field name="name"/>
                                     <field name="month_income"/>
                                     <field name="month_expense"/>
                                 </list>
-                            </field>
-                            <separator string="Income Lines"/>
-                            <field name="income_ids" nolabel="1"/>
-                            <separator string="Expense Lines"/>
-                            <field name="expense_ids" nolabel="1"/>
-                        </group>
+                                </field>                            
+                            </page>
+
+                            <page string="Income Lines">
+                                <field name="income_ids"/>                            
+                            </page>
+
+                            <page string="Expense Lines">
+                                <field name="expense_ids"/>                            
+                            </page>
+
+                        </notebook>
+
                     </sheet>
                 </form>
             </field>

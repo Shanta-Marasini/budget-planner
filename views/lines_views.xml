@@ -69,6 +69,13 @@
                             <field name="units"/>
                             <field name="description"/>
                             <field name="line_expense"/>
+                            <field name="expense_line_items">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="sub_category_id"/>
+                                    <field name="item_expense"/>
+                                </list>
+                            </field>
                         </group>
                     </sheet>
                 </form>

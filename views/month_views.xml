@@ -6,7 +6,7 @@
             <field name="name">budget.month.list</field>
             <field name="model">budget.months</field>
             <field name="arch" type="xml">
-                <list>
+                <list default_order="year_id desc, name">
                     <field name="year_id"/>
                     <field name="name"/>
                     <field name="month_income"/>

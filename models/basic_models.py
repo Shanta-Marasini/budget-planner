@@ -19,6 +19,17 @@ class BudgetYears(models.Model):
     
     currency_id = fields.Many2one('res.currency', string='Currency', store=True, compute='_compute_currency_id')
 
+    monthly_average_income = fields.Monetary(
+        string='Monthly Average Income',
+        compute='_compute_income_expense', store=True,
+        currency_field="currency_id"
+    )
+
+    monthly_average_expense = fields.Monetary(
+        string='Monthly Average Expense',
+        compute='_compute_income_expense', store=True,
+        currency_field="currency_id"
+    )
 
     _sql_constraints = [
     ('unique_year', 'unique(name)', 'The Year must be unique!')
@@ -45,6 +56,8 @@ class BudgetYears(models.Model):
         for record in self:
             record.year_income = sum(record.month_ids.mapped('month_income')) if record.month_ids else 0.0
             record.year_expense = sum(record.month_ids.mapped('month_expense')) if record.month_ids else 0.0
+            record.monthly_average_income = record.year_income / len(record.month_ids) if record.year_income else 0.0
+            record.monthly_average_expense = record.year_expense / len(record.month_ids) if record.year_expense else 0.0
         
 
 class BudgetMonths(models.Model):
@@ -152,6 +165,7 @@ class BudgetExpense(models.Model):
     month_id = fields.Many2one('budget.months', string="Month", ondelete="cascade", domain="[('year_id', '=', year_id)]")
     category_id = fields.Many2one('budget.category', string="Category", required=True, domain="[('category_type', '=', 'expense')]")
     sub_category_id = fields.Many2one('budget.sub.category', string="Sub Category", domain="[('category_id', '=', category_id)]")    
+    expense_line_items = fields.One2many('budget.expense.items', 'expense_id', string="Expense Items")
     date = fields.Date(string="Date")
     place = fields.Many2one('budget.place', string="Place")
     units = fields.Integer(string="Units")
@@ -197,6 +211,34 @@ class BudgetExpense(models.Model):
     #                 f"The date {self.date} is not within the selected month ({self.month_id.name}) "
     #                 f"for the year {self.year_id.name}. Please select a valid date."
     #             )
+
+
+class BudgetExpenseItems(models.Model):
+    _name = 'budget.expense.items'
+    _description = 'Holds data for expense items'
+
+    name = fields.Char(string="Item", required=True)
+    expense_id = fields.Many2one('budget.expense', string="Expense Line", ondelete="cascade")
+    expense_id_category = fields.Many2one(
+        'budget.category',
+        string="Expense Category",
+        related="expense_id.category_id",
+        store=True,  # Store the value in the database
+        readonly=True  # Make it non-editable
+    )
+    sub_category_id = fields.Many2one('budget.sub.category', string="Sub Category", domain="[('category_id', '=', expense_id_category)]") 
+
+    currency_id = fields.Many2one('res.currency', string='Currency', required=True, compute='_compute_currency_id')
+
+    @api.depends_context('company')
+    def _compute_currency_id(self):
+        self.currency_id = self.env.company.currency_id
+
+    item_expense = fields.Monetary(
+        string='Amount',
+        currency_field="currency_id"
+    )
+
 
 
 class BudgetCategory(models.Model):
